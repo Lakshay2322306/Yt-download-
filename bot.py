@@ -1,4 +1,3 @@
-
 import logging
 import os
 import yt_dlp
@@ -10,9 +9,9 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 # Bot configuration
-API_ID = 21438467  # Your API ID
-API_HASH = "320d16934ede2ce14fb4e1f0475e5e7e"  # Your API Hash
-BOT_TOKEN = "7180223394:AAEqekKqF7747OL6tx8jxjB0MRTpczhoxtY"  # Your Bot Token
+API_ID = 21438467  # Replace with your API ID
+API_HASH = "320d16934ede2ce14fb4e1f0475e5e7e"  # Replace with your API Hash
+BOT_TOKEN = "7180223394:AAEqekKqF7747OL6tx8jxjB0MRTpczhoxtY"  # Replace with your Bot Token
 
 # Initialize Pyrogram Client
 app = Client("youtube_downloader_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
@@ -50,7 +49,7 @@ async def start_handler(client, message):
     await message.reply_text("Welcome! Send me a YouTube link, and I'll fetch the thumbnail with download options!")
 
 # YouTube link handler
-@app.on_message(filters.text & ~filters.command())
+@app.on_message(filters.text & ~filters.regex("^/"))
 async def youtube_link_handler(client, message):
     video_url = message.text
 
